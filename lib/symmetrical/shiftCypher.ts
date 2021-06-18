@@ -5,9 +5,10 @@ const alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('')
 const createCharCodeList = (charList: string[]) =>
   charList.map((e) => e.charCodeAt(0))
 
-const createShiftChars = (shiftPosition: number) => {
+const createShiftCharCodeList = (shiftPosition: number) => {
   const pos = shiftPosition % 26
-  return [...alphabet.slice(pos, 26), ...alphabet.slice(0, pos)]
+  const shiftedChar = [...alphabet.slice(pos, 26), ...alphabet.slice(0, pos)]
+  return createCharCodeList(shiftedChar)
 }
 
 const createCypher = (shiftPosition: number) => {
