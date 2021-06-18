@@ -2,7 +2,7 @@
 
 const alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('')
 
-const createCharCodes = (charList: string[]) =>
+const createCharCodeList = (charList: string[]) =>
   charList.map((e) => e.charCodeAt(0))
 
 const createShiftChars = (shiftPosition: number) => {
