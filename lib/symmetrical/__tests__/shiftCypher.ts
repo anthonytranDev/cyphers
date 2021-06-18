@@ -1,14 +1,14 @@
-import { encode } from '../shiftCypher'
+import { encode, decode } from '../shiftCypher'
 
 describe('encode', () => {
   it.each([
-    [0, 'rick', 'rick'],
-    [1, 'rick', 'sjdl'],
-    [6, 'rick', 'xoiq'],
-    [6, 'rick and morty', 'xoiq gtj suxze'],
+    ['rick', 'rick', 0],
+    ['rick', 'sjdl', 1],
+    ['rick', 'xoiq', 6],
+    ['rick and morty', 'xoiq gtj suxze', 6],
   ])(
-    'encodes string value "%s" with a shift value "%s" to give string "%s"',
-    (shiftValue, message, cypherText) => {
+    'encodes the message "%s" to give string "%s" with shift key "%s"',
+    (message, cypherText, shiftValue) => {
       const text = encode(message, shiftValue)
 
       expect(text).toEqual(cypherText)
