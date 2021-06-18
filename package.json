@@ -1,0 +1,30 @@
+{
+  "name": "cyphers",
+  "version": "0.0.0",
+  "description": "Playground for myself to look into cyphers",
+  "main": "index.js",
+  "engines": {
+    "node": "14.15.0"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anthonytranDev/cyphers.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/anthonytranDev/cyphers/issues"
+  },
+  "homepage": "https://github.com/anthonytranDev/cyphers#readme",
+  "devDependencies": {
+    "@types/jest": "^26.0.23",
+    "jest": "^27.0.4",
+    "ts-jest": "^27.0.3",
+    "ts-node": "^10.0.0",
+    "typescript": "^4.3.4"
+  }
+}
