@@ -13,14 +13,14 @@ const createCypher = (shiftPosition: number) => {
   const alphabetCharCodes = createCharCodeList(alphabet)
   const shiftCharCodes = createShiftCharCodeList(shiftPosition)
 
-  const alphabetCodes = { ...alphabetCharCodes }
-  const emptyCypher: Record<string, number> = {}
+  const cypher: Record<string, number> = {}
 
-  for (const key in alphabetCodes) {
-    emptyCypher[alphabetCharCodes[key]] = shiftCharCodes[key]
+  for (const key in { ...alphabetCharCodes }) {
+    const alphabetCharCode = alphabetCharCodes[key]
+    cypher[alphabetCharCode] = shiftCharCodes[key]
   }
 
-  return emptyCypher
+  return cypher
 }
 
 const encode = (text: string, shiftKey: number, reverse?: boolean) => {
