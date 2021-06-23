@@ -1,5 +1,6 @@
 import {
   encode,
+  decode,
   createCharCodeList,
   createShiftCharCodeList,
   createCypher,
@@ -176,11 +177,27 @@ describe('encode', () => {
     ['rick', 'xoiq', 6],
     ['rick and morty', 'xoiq gtj suxze', 6],
   ])(
-    'encodes the message "%s" to give string "%s" with shift key "%s"',
+    'encodes the message "%s" to give cypher text "%s" with shift key "%s"',
     (message, cypherText, shiftValue) => {
       const text = encode(message, shiftValue)
 
       expect(text).toEqual(cypherText)
+    }
+  )
+})
+
+describe('decode', () => {
+  it.each([
+    [0, 'rick', 'rick'],
+    [1, 'sjdl', 'rick'],
+    [6, 'xoiq', 'rick'],
+    [6, 'xoiq gtj suxze', 'rick and morty'],
+  ])(
+    'decodes the cypher text "%s" to give message "%s" with shift key "%s"',
+    (key, cypherText, message) => {
+      const text = decode(cypherText, key)
+
+      expect(text).toEqual(message)
     }
   )
 })
