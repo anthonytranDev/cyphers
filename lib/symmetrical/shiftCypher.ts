@@ -42,4 +42,29 @@ const encode = (message: string, shiftPosition: number) => {
   return cypherText
 }
 
-export { encode }
+const decode = (cypherText: string, shiftKey: number) => {
+  const reverseShift = 26 - shiftKey
+  const cypher = createCypher(reverseShift)
+  const cypherTextCharCode = createCharCodeList(cypherText.split(''))
+  const message = cypherTextCharCode
+    .map((charCode) => {
+      let char = charCode
+
+      if (cypher[charCode]) {
+        char = cypher[charCode]
+      }
+
+      return String.fromCharCode(char)
+    })
+    .join('')
+
+  return message
+}
+
+export {
+  encode,
+  decode,
+  createCharCodeList,
+  createShiftCharCodeList,
+  createCypher,
+}
