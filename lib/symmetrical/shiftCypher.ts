@@ -1,5 +1,3 @@
-// Shift cypher
-
 const alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('')
 
 const createCharCodeList = (charList: string[]) =>
@@ -27,15 +25,15 @@ const createCypher = (shiftPosition: number) => {
 
 const encode = (message: string, shiftPosition: number) => {
   const cypher = createCypher(shiftPosition)
-  const cypherText = message
-    .split('')
-    .map((elem) => {
-      let char = elem
-      const charCode = elem.charCodeAt(0)
+  const messageCharCode = createCharCodeList(message.split(''))
+  const cypherText = messageCharCode
+    .map((charCode) => {
+      let char = charCode
+
       if (cypher[charCode]) {
-        char = String.fromCharCode(cypher[charCode])
+        char = cypher[charCode]
       }
-      return char
+      return String.fromCharCode(char)
     })
     .join('')
 
