@@ -12,11 +12,11 @@ const createShiftCharCodeList = (shiftPosition: number) => {
 }
 
 const createCypher = (shiftPosition: number) => {
-  const alphabetCharCodes = createCharCodes(alphabet)
-  const shiftCharCodes = createCharCodes(createShiftChars(shiftPosition))
+  const alphabetCharCodes = createCharCodeList(alphabet)
+  const shiftCharCodes = createShiftCharCodeList(shiftPosition)
 
   const alphabetCodes = { ...alphabetCharCodes }
-  const emptyCypher: { [k: string]: any } = {}
+  const emptyCypher: Record<string, number> = {}
 
   for (const key in alphabetCodes) {
     emptyCypher[alphabetCharCodes[key]] = shiftCharCodes[key]
