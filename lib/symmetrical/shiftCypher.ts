@@ -23,46 +23,19 @@ const createCypher = (shiftPosition: number) => {
   return emptyCypher
 }
 
-const encode = (message: string, shiftPosition: number) => {
-  const cypher = createCypher(shiftPosition)
-  const messageCharCode = createCharCodeList(message.split(''))
-  const cypherText = messageCharCode
-    .map((charCode) => {
-      let char = charCode
+const encode = (text: string, shiftKey: number, reverse?: boolean) => {
+  const key = reverse ? 26 - shiftKey : shiftKey
 
-      if (cypher[charCode]) {
-        char = cypher[charCode]
-      }
-      return String.fromCharCode(char)
-    })
-    .join('')
+  const cypher = createCypher(key)
+  const textCharCode = createCharCodeList(text.split(''))
 
-  return cypherText
-}
-
-const decode = (cypherText: string, shiftKey: number) => {
-  const reverseShift = 26 - shiftKey
-  const cypher = createCypher(reverseShift)
-  const cypherTextCharCode = createCharCodeList(cypherText.split(''))
-  const message = cypherTextCharCode
-    .map((charCode) => {
-      let char = charCode
-
-      if (cypher[charCode]) {
-        char = cypher[charCode]
-      }
-
-      return String.fromCharCode(char)
-    })
+  const message = textCharCode
+    .map((charCode) =>
+      String.fromCharCode(cypher[charCode] ? cypher[charCode] : charCode)
+    )
     .join('')
 
   return message
 }
 
-export {
-  encode,
-  decode,
-  createCharCodeList,
-  createShiftCharCodeList,
-  createCypher,
-}
+export { encode, createCharCodeList, createShiftCharCodeList, createCypher }

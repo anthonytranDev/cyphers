@@ -1,6 +1,5 @@
 import {
   encode,
-  decode,
   createCharCodeList,
   createShiftCharCodeList,
   createCypher,
@@ -184,9 +183,7 @@ describe('encode', () => {
       expect(text).toEqual(cypherText)
     }
   )
-})
 
-describe('decode', () => {
   it.each([
     [0, 'rick', 'rick'],
     [1, 'sjdl', 'rick'],
@@ -195,7 +192,7 @@ describe('decode', () => {
   ])(
     'decodes the cypher text "%s" to give message "%s" with shift key "%s"',
     (key, cypherText, message) => {
-      const text = decode(cypherText, key)
+      const text = encode(cypherText, key, true)
 
       expect(text).toEqual(message)
     }
