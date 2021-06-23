@@ -164,7 +164,7 @@ describe('createCypher', () => {
       },
       6,
     ],
-  ])('create the cypher "%s" ', (cypherCharCode, position) => {
+  ])('creates the cypher "%s" ', (cypherCharCode, position) => {
     expect(createCypher(position)).toEqual(cypherCharCode)
   })
 })
@@ -185,13 +185,13 @@ describe('encode', () => {
   )
 
   it.each([
-    [0, 'rick', 'rick'],
-    [1, 'sjdl', 'rick'],
-    [6, 'xoiq', 'rick'],
-    [6, 'xoiq gtj suxze', 'rick and morty'],
+    ['rick', 'rick', 0],
+    ['sjdl', 'rick', 1],
+    ['xoiq', 'rick', 6],
+    ['xoiq gtj suxze', 'rick and morty', 6],
   ])(
     'decodes the cypher text "%s" to give message "%s" with shift key "%s"',
-    (key, cypherText, message) => {
+    (cypherText, message, key) => {
       const text = encode(cypherText, key, true)
 
       expect(text).toEqual(message)
