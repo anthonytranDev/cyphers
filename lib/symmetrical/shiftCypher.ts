@@ -1,16 +1,14 @@
-const alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('')
-
-const createCharCodeList = (charList: string[]) =>
-  charList.map((e) => e.charCodeAt(0))
+import createCharCodeList from '../utils/createCharCodeList'
+import { ALPHABET } from '../constants'
 
 const createShiftCharCodeList = (shiftPosition: number) => {
   const pos = shiftPosition % 26
-  const shiftedChar = [...alphabet.slice(pos, 26), ...alphabet.slice(0, pos)]
+  const shiftedChar = [...ALPHABET.slice(pos, 26), ...ALPHABET.slice(0, pos)]
   return createCharCodeList(shiftedChar)
 }
 
 const createCypher = (shiftPosition: number) => {
-  const alphabetCharCodes = createCharCodeList(alphabet)
+  const alphabetCharCodes = createCharCodeList(ALPHABET)
   const shiftCharCodes = createShiftCharCodeList(shiftPosition)
 
   const cypher: Record<string, number> = {}
