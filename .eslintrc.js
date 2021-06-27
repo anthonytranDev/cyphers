@@ -25,6 +25,11 @@ module.exports = {
     // Only allow process.env in specific, centralised locations.
     // The collects together all environment variable usage.
     'no-process-env': 'error',
+    // Removes the requirement for a single export to be default
+    'import/prefer-default-export': 'off',
+    // Enables to use to for..of loops or any other performance
+    // degrading JavaScript syntax
+    'no-restricted-syntax': 'off',
   },
   settings: {
     react: {
