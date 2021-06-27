@@ -13,9 +13,8 @@ const createCypher = (shiftPosition: number) => {
 
   const cypher: Record<string, number> = {}
 
-  for (const key in { ...alphabetCharCodes }) {
-    const alphabetCharCode = alphabetCharCodes[key]
-    cypher[alphabetCharCode] = shiftCharCodes[key]
+  for (const [key, value] of Object.entries(alphabetCharCodes)) {
+    cypher[value] = shiftCharCodes[key]
   }
 
   return cypher

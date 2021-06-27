@@ -140,7 +140,7 @@ describe('createCypher', () => {
       },
       6,
     ],
-  ])('creates the cypher "%s" ', (cypherCharCode, position) => {
+  ])('creates the cypher "%s"', (cypherCharCode, position) => {
     expect(createCypher(position)).toEqual(cypherCharCode)
   })
 })
