@@ -33,7 +33,9 @@ module.exports = {
   },
   settings: {
     react: {
-      version: 'detect',
+      // This removes lint warning message using test runs
+      // Specific linting packages are required; package dependency reasons
+      version: '17',
     },
   },
 }
