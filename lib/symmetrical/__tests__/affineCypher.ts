@@ -212,4 +212,19 @@ describe('encode', () => {
       expect(encode(message, key)).toEqual(cypherText)
     }
   )
+
+  it.each([
+    ['rick', 'rick', [1, 0]],
+    ['rick', 'rick', [1, 26]],
+    ['rick and morty', 'rick and morty', [1, 26]],
+    ['xusm anb ewxpi', 'rick and morty', [3, 0]],
+    ['tmqc anl sitjk', 'rick and morty', [5, 0]],
+    ['yrvh fsq xnyop', 'rick and morty', [5, 1]],
+    ['xqug erp wmxno', 'rick and morty', [5, 6]],
+  ])(
+    'decodes the cypher text "%s" to give message "%s" with shift key "%s"',
+    (message, cypherText, key: Key) => {
+      expect(encode(message, key, true)).toEqual(cypherText)
+    }
+  )
 })

@@ -1,3 +1,4 @@
+import { invertObject } from '../utils/invertObject'
 import { ALPHABET } from '../constants'
 
 type Multiple = 1 | 3 | 5 | 7 | 9 | 11 | 15 | 17 | 19 | 21 | 23 | 25
@@ -51,8 +52,10 @@ const createCypher = (affine: Key) => {
   return cypher
 }
 
-const encode = (text: string, affineKey: Key) => {
-  const cypher = createCypher(affineKey)
+const encode = (text: string, affineKey: Key, decode: boolean = false) => {
+  const cypher = decode
+    ? invertObject(createCypher(affineKey))
+    : createCypher(affineKey)
 
   const message = text
     .split('')
